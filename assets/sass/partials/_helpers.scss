@@ -1,0 +1,590 @@
+// ==========================================================================
+// $ Options
+// ==========================================================================
+
+//
+// Helper Class Selector
+// @value  '%'  Placeholder, no output css
+// @value  '.'  Class, output all the CSS required to use the helper classes as direct OOCSS classes
+//
+$hcs: unquote( '%' ) !default;
+
+
+
+
+
+
+
+
+
+// ==========================================================================
+// $ Helper Mixins
+// ==========================================================================
+
+//
+// REM Mixin
+// @link http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin
+//
+// @require {function} parseInt
+//
+@mixin rem( $property, $values ) {
+	$base-px-size: 16 !default;
+
+	$px : ();
+	$rem: ();
+
+	@each $value in $values {
+
+		@if $value == 0 or $value == auto {
+			$px : append( $px , $value );
+			$rem: append( $rem, $value );
+		}
+
+		@else {
+			$unit: unit( $value );
+			$val: parseInt( $value );
+
+			@if $unit == 'px' {
+				$px : append( $px,  $value );
+				$rem: append( $rem, ( $val / $base-px-size + rem ) );
+			}
+
+			@if $unit == 'rem' {
+				$px : append( $px,  ( $val * $base-px-size + px ) );
+				$rem: append( $rem, $value );
+			}
+		}
+	}
+
+	@if $px == $rem {
+		#{$property}: $px;
+	} @else {
+		#{$property}: $px;
+		#{$property}: $rem;
+	}
+}
+
+
+
+//
+// Cross browser inline block
+// Only required for IE7-
+//
+@mixin inline-block( $alignment: middle ) {
+	vertical-align: $alignment;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+
+
+//
+// Cross browser opacity
+//
+@mixin opacity( $opacity: 0 ) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+
+//
+// Text antialiasing
+// @param  {string}  $value  antialiased (default), subpixel-antialiased, none
+//
+@mixin font-smoothing( $value: aa ) {
+	@if $value == aa {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+	} @else if $value == subpixel-aa {
+		-webkit-font-smoothing: subpixel-antialiased;
+		-moz-osx-font-smoothing: auto;
+
+	} @else if $value == none {
+		-webkit-font-smoothing: none;
+		-moz-osx-font-smoothing: none;
+	}
+}
+
+
+
+//
+// Image Replacement
+// Needs to be applied to a `block` or `inline-block` element
+// http://css-tricks.com/examples/ImageReplacement/#kellum
+//
+@mixin ir(  ) {
+	text-indent: 100% !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	*text-indent: -9999px !important; // IE 6/7 fallback
+}
+
+
+
+//
+// Image Replacement #2
+// Hide the text when regular image replacement wont work
+// Usually required to replace text on <button> elements in Firefox
+//
+@mixin font-crush(  ) {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+}
+
+
+
+//
+// Clearfix
+//
+@mixin cf(  ) {
+	&:before, &:after { content: " "; display: table; }
+	&:after { clear: both; }
+	*zoom: 1; // IE 6&7
+}
+
+
+
+//
+// Hide from both screenreaders and browsers: h5bp.com/u
+//
+@mixin hidden(  ) {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+
+
+//
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+//
+@mixin visuallyhidden( $focusable: false ) {
+	border: 0 !important;
+	clip: rect(0 0 0 0) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+
+	// Extends the `visuallyhidden` class to allow the element to be focusable
+	// when navigated to via the keyboard: h5bp.com/p
+	@if $focusable == true {
+		&:active,
+		&:focus {
+			clip: auto !important;
+			height: auto !important;
+			margin: 0 !important;
+			overflow: visible !important;
+			position: static !important;
+			width: auto !important;
+		}
+	}
+}
+
+
+
+//
+// Hide visually and from screenreaders, but maintain layout
+//
+@mixin invisible(  ) {
+	visibility: hidden !important;
+}
+
+
+
+//
+// Text Overflow Ellipsis
+// Note: This requires the element to be block or inline-block.
+// @link  stackoverflow.com/a/9931634
+// @example  `.dot-dot-dot { @include text-ellipsis; }`
+//
+@mixin text-ellipsis(  ) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+
+//
+// iOS Momentum Scrolling -- Much smoother!
+// @link  css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements
+//
+@mixin momentum-scroll(  ) {
+	overflow-y: scroll; // has to be scroll, not auto
+	-webkit-overflow-scrolling: touch;
+}
+
+
+
+//
+// Adjust font rendering of light text on dark backgrounds in Chrome + OSX
+//
+@mixin antialiased(  ) {
+	-webkit-font-smoothing: antialiased;
+}
+
+
+
+//
+// Prevent an element from being clickable and
+// allow click to pass through to element below
+// @link caniuse.com/#feat=pointer-events
+//
+@mixin no-click(  ) {
+	pointer-events: none;
+}
+
+
+
+//
+// Center Block
+// @example `.center-me { @include center-block; }`
+//
+@mixin center-block(  ) {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+//
+// Alpha Attribute
+// Generates a fallback for alpha colors based on the background & foreground colors
+// @link thesassway.com/intermediate/mixins-for-semi-transparent-colors
+//
+// @param  {string}  $attribute   attribute name
+// @param  {string}  $color       foreground color
+// @param  {string}  $background  background color
+//
+// @example `@include alpha-attribute( 'background-color', rgba(black, 0.5), white );`
+//
+@mixin alpha-attribute( $attribute, $color, $background ) {
+	$percent: alpha( $color ) * 100%;
+	$opaque: opacify( $color, 1 );
+	$solid-color: mix( $opaque, $background, $percent );
+	#{$attribute}: $solid-color;
+	#{$attribute}: $color;
+}
+
+
+
+//
+// Font Face
+// Generate all the necessary font-face properties
+// @link https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
+//
+// @require  {function}  str-replace
+//
+// @param  {string}  $name    font name to be referenced in `font-family` declarations
+// @param  {string}  $path    path to the font files (excluding file extension)
+// @param  {string}  $weight  font weight
+// @param  {string}  $style   font style
+// @param  {list}    $exts    font types (file extensions) to use
+//
+// @example `@include font-face( 'NeuzeitGro', font('2A088F_4_0'), 400 )`
+//
+@mixin font-face( $name, $path, $weight: normal, $style: normal, $exts: eot woff2 woff ttf svg ) {
+	$src: null;
+
+	$extmods: (
+		eot: '?#iefix',
+		svg: '#' + str-replace( $name, ' ', '_' )
+	);
+
+	$formats: (
+		eot: 'embedded-opentype',
+		otf: 'opentype',
+		ttf: 'truetype'
+	);
+
+	@each $ext in $exts {
+		$extmod: if( map-has-key( $extmods, $ext ), $ext + map-get( $extmods, $ext ), $ext );
+		$format: if( map-has-key( $formats, $ext ), map-get( $formats, $ext ), $ext );
+		$src: append( $src, url( quote( $path + '.' + $extmod ) ) format( quote( $format ) ), comma );
+	}
+
+	@font-face {
+		font-family: quote( $name );
+		font-weight: $weight;
+		font-style: $style;
+
+		@if index( $exts, eot ) {
+			src: url( '#{$path}.eot' );
+		}
+
+		src: $src;
+	}
+}
+
+
+
+
+
+
+
+
+
+// ==========================================================================
+// $ Patterns
+// ==========================================================================
+
+//
+// Vertical Centering for Legacy Browsers
+// css-tricks.com/centering-in-the-unknown
+//
+// @example
+// ```html
+//	<div class="vertical-center">
+//		<div class="vertical-center__content">
+//			This content is vertically centered!
+//		</div>
+//	</div>
+// ```
+//
+@mixin vertical-center-legacy( $content-el: '&__content' ) {
+	// The parent can be any width and height
+	text-align: center;
+
+	// The ghost, nudged to maintain perfect centering
+	&:before {
+		content: '';
+		@include inline-block();
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -0.25em; // Adjusts for spacing, can also use font-size: 0 on parent and manually add the font size back in to child
+	}
+
+	// The element to be centered, can also be of any width and height
+	#{$content-el} {
+		@include inline-block();
+		vertical-align: middle;
+	}
+}
+
+
+
+//
+// Easy horizontal & vertical centering of anything in IE9+
+// @link  zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css
+//
+@mixin center( $includeWidth: true ) {
+	@if $includeWidth {
+		width: auto;
+	}
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+}
+
+
+
+//
+// Easy vertical centering of anything in IE9+
+// @link  zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css
+//
+@mixin vertical-center( $includeWidth: true ) {
+	@if $includeWidth {
+		width: 100%;
+	}
+	position: absolute;
+	top: 50%;
+	transform: translateY( -50% );
+}
+
+
+
+//
+// Responsive background images
+// that maintain their aspect ratio
+//
+// @param  {string}  $url     image url
+// @param  {int}     $width   width of image file
+// @param  {int}     $height  height of image file
+// @param  {int}     $size    % width of the parent the image should occupy
+//
+@mixin responsive-bg-image( $url, $width, $height, $size: 100% ) {
+	display: block;
+	width: $size;
+	height: 0;
+	padding-bottom: $height/$width * $size; // the magic
+
+	background-size: 100%;
+	background-image: url($url);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+
+
+//
+// Media Object
+// @link  stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+//
+// @version  default     =  Image -- Text
+// @version  .media--rev =  Text  -- Image
+//
+// @example
+// ``` html
+//	<div class="media">
+//		<a class="media__img" href="">
+//			<img src="" alt="" />
+//		</a>
+//		<div class="media__bd">
+//			Some text next to the image
+//		</div>
+//	</div>
+//	```
+//
+@mixin media-object( $spacing: false ) {
+
+	& {
+		@if ( $spacing ) { margin: $spacing; }
+
+		&__img {
+			float: left;
+			@if ( $spacing ) { margin-right: $spacing; }
+
+			img {
+				display: block;
+			}
+		}
+
+		// Clearfix
+		&,
+		&__bd {
+			overflow: hidden;
+			_overflow: visible;
+			zoom: 1;
+		}
+
+	}
+
+	//
+	// Modifier: Reverse
+	// Text on the left, image on the right
+	// @extends .media
+	//
+	&--rev &__image {
+		float: right;
+
+		@if ( $spacing ) {
+			margin-left: $spacing;
+			margin-right: 0;
+		}
+	}
+
+}
+
+
+
+//
+// Fluid Embed
+// Makes media embeds maintain a fixed aspect ratio but adapt to the width of their parent container
+//
+// @link  github.com/suitcss/flex-embed/blob/master/flex-embed.css
+//
+// @example
+// ``` html
+//	<div class="fluid-embed fluid-embed--16x9">
+//		<iframe class="fluid-embed__item" src="..."></iframe>
+//	</div>
+// ```
+//
+@mixin fluid-embed(  ) {
+	position: relative;
+	padding-top: 25px;
+	padding-bottom: 56.25%;	// default to 16x9
+	height: 0;
+
+	//
+	// The use of an explicit descendant class makes this component more flexible.
+	// However, it will work automatically for iframes, embeds, and objects to
+	// account for times when you cannot modify the attributes for 3rd party widget
+	// code.
+	//
+	&__item,
+	iframe,
+	embed,
+	object {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+
+	//
+	// Modifier: 16:9 aspect ratio
+	// @extends .fluid-embed
+	// libsass doesn't support BEM modifiers than start with numbers (#738)
+	//
+	&--r16x9 {
+		padding-bottom: 56.25%;
+	}
+
+	//
+	// Modifier: 4:3 aspect ratio
+	// @extends .fluid-embed
+	// libsass doesn't support BEM modifiers than start with numbers (#738)
+	//
+	&--r4x3 {
+		padding-bottom: 75%;
+	}
+}
+
+
+
+
+
+
+
+
+// ==========================================================================
+// $ Helper Classes
+// ==========================================================================
+
+#{$hcs}cf                        { @include cf; }
+#{$hcs}ir                        { @include ir; }
+#{$hcs}font-crush                { @include font-crush; }
+#{$hcs}hidden                    { @include hidden; }
+#{$hcs}visuallyhidden            { @include visuallyhidden; }
+#{$hcs}visuallyhidden--focusable { @include visuallyhidden( $focusable: true ); }
+#{$hcs}invisible                 { @include invisible; }
+
+#{$hcs}fluid-embed               { @include fluid-embed; }
+// .media                           { @include media-object; }
+
+
+
+
+
+
+
+// ==========================================================================
+// $ Foundation Helpers
+// ==========================================================================
+
+@if ( mixin-exists( grid-row ) and mixin-exists( grid-column ) ) {
+	$total-columns: 12 !default;
+	$one-third-columns: $total-columns / 3;
+
+	#{$hcs}row              { @include grid-row(); }
+	#{$hcs}row-collapse     { @include grid-row( $behavior: collapse ); }
+	#{$hcs}row-nest         { @include grid-row( $behavior: nest ); }
+
+	#{$hcs}full-width       { @include grid-column( $total-columns ); }
+	#{$hcs}two-thirds-width { @include grid-column( $one-third-columns * 2 ); }
+	#{$hcs}half-width       { @include grid-column( $total-columns / 2 ); }
+	#{$hcs}one-third-width  { @include grid-column( $one-third-columns ); }
+	#{$hcs}quarter-width    { @include grid-column( $total-columns / 4 ); }
+}

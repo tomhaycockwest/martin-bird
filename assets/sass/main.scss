@@ -4,4 +4,8 @@ Client: Smoking Cow
 Author: Tom Haycock-West
 */
 
-@import 'intro';
+@import 'partials/helpers';
+@import 'partials/vars';
+@import 'partials/typography';
+@import 'modules/global';
+@import 'sections/intro';

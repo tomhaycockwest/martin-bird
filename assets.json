@@ -1,0 +1,40 @@
+{
+	"css": [
+		{
+			"handle" : "Owl",
+			"src" : "vendor/OwlCarousel2/dist/assets/owl.carousel.css"
+		}
+	],
+
+	"js": [
+		{
+			"handle" : "Modernizr",
+			"src" : "vendor/modernizr/modernizr.js",
+			"in_footer" : false
+		},
+		{
+			"handle" : "ModernizrVh",
+			"src" : "vendor/modernizr/feature-detects/css-vhunit.js",
+			"in_footer" : false
+		},
+		{
+			"handle" : "jquery",
+			"src" : "vendor/jquery/jquery.js",
+			"dist_only" : true
+		},
+		{
+			"handle" : "Backstretch",
+			"src" : "vendor/",
+			"dist_only" : true
+		},
+		{
+			"handle" : "Owl",
+			"src" : "vendor/OwlCarousel2/dist/owl.carousel.js"
+		},
+		{
+			"handle" : "app",
+			"src" : "build/bundle.js",
+			"dependencies" : ["jquery"]
+		}
+	]
+}
