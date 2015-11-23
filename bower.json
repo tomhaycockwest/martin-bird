@@ -1,0 +1,16 @@
+{
+	"name": "martin-bird",
+	"version": "0.1.0",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"normalize.css" : "^3.0.3",
+		"modernizr"  : "^2.8.3"
+	}
+}
