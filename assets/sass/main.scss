@@ -4,8 +4,15 @@ Client: Smoking Cow
 Author: Tom Haycock-West
 */
 
+@import '../vendor/normalize.css/normalize';
+
+@import '../vendor/foundation/scss/foundation/components/global';
+@import '../vendor/foundation/scss/foundation/components/grid';
+
 @import 'partials/helpers';
 @import 'partials/vars';
 @import 'partials/typography';
 @import 'modules/global';
+@import 'sections/header';
 @import 'sections/intro';
+@import 'sections/about';

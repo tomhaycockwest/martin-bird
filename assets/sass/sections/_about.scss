@@ -1,0 +1,23 @@
+.about {
+	@include grid-row( );
+	text-align: center;
+	font-weight: bold;
+	margin-top: 270px;
+	margin-bottom: 300px;
+
+	.inner {
+		@include grid-column( 10, $center:true );
+
+		.title,
+		.copy {
+			font-size: 20px;
+			letter-spacing: 1px;
+		}
+
+		.title {
+			margin-bottom: 74px;
+			font-size: 36px;
+			line-height: 36px;
+		}
+	}
+}
