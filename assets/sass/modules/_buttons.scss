@@ -1,0 +1,121 @@
+// ==========================================================================
+// $ Buttons
+// ==========================================================================
+
+//
+// Base Button Style
+// Modified from https://github.com/csswizardry/beautons/blob/master/beautons.css
+//
+.btn,
+%btn {
+	-webkit-appearance: none;
+	display: inline-block;
+	vertical-align: middle;
+	white-space: nowrap;
+	// font-family: inherit;
+	font-size: 100%;
+	cursor: pointer;
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+
+	&,
+	&:hover,
+	&:active,
+	&:focus,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
+	}
+
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+}
+
+
+
+
+
+//
+// $$ Button Size Modifiers
+// ==========================================================================
+
+//
+// These all follow the same sizing rules; text is 1em, space around it
+// remains uniform.
+//
+// @extends  .btn
+//
+@mixin btn-size( $width: 1, $height: 2 ) {
+	padding-right: $width * 1em;
+	padding-left: $width * 1em;
+	line-height: $height;
+	height: $height * 1em;
+}
+
+%btn--small { @include btn-size( 0.5, 2 ); }
+%btn--mid   { @include btn-size( 2.25, 3.25 ); }
+%btn--large { @include btn-size( 1.5, 4 ); }
+%btn--huge  { @include btn-size( 2, 5 ); }
+
+// These buttons will fill the entirety of their container.
+%btn--fullwidth {
+	width: 100%;
+	padding-right: 0;
+	padding-left: 0;
+	text-align: center;
+}
+
+
+
+
+
+//
+// $$ Button Styles
+// ==========================================================================
+
+%btn--style-black {
+	color: #84bc9c;
+	border: solid 2px #393737;
+	@include rem( font-size, 18px );
+	text-transform: uppercase;
+	background: transparent;
+	transition: all 0.25s linear;
+
+	i {
+		font-size: 11px;
+	}
+
+	&:hover {
+		color: #393737;
+		background: #84bc9c;
+	}
+}
+
+
+
+
+//
+// $$ Button Specifics
+// @extends .btn, a button size & a button style
+// and any CSS specific to that button
+// ==========================================================================
+
+//
+// Primary Button
+// @example  `<a href="" class="btn-primary">Button!</a>
+//
+
+.btn-black {
+	@extend %btn;
+	@extend %btn--mid;
+	@extend %btn--style-black;
+}
