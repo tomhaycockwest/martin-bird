@@ -3,11 +3,16 @@
     display: block;
     width: 100%;
     color: #fff;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
     z-index: 9999;
     position: fixed;
     top: 0;
     left: 0;
+    
+
+    &.not-top {
+    	background: $bg;
+    }
 
     .inner {
 		@include grid-row(  );
@@ -24,6 +29,7 @@
 			float: right;
 			list-style: none;
 			margin-top: 101px;
+			padding-right: 0.9375rem;
 
 			li {
 				display: inline-block;

@@ -1,0 +1,39 @@
+.section--gallery {
+	@include grid-row( );
+
+	.gallery-nav {
+		@include grid-column( 2 );
+		text-align: left;
+		
+		ul {
+			padding: 0;
+			margin-top: 25px;
+			
+			li {
+				list-style: none;
+
+				a {
+					text-decoration: none;
+					color: $body;
+					@include rem( font-size, 20px );
+				}
+			}
+		}
+
+	}
+
+	.gallery-container {
+		@include grid-column( 10, $collapse:true );
+
+		.gallery {
+			.gallery-item {
+			  float: left;
+			  width: 220px;
+			  height: 200px;
+			}
+		}
+
+	}
+
+
+}

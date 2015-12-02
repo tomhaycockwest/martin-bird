@@ -12,7 +12,10 @@
   "dependencies": {
     "normalize.css": "^3.0.3",
     "modernizr": "^2.8.3",
-    "jquery-backstretch": "backstretch#~2.0.4"
+    "jquery-backstretch": "backstretch#~2.0.4",
+    "isotope": "~2.2.2",
+    "isotope-cells-by-row": "~1.1.2",
+    "foundation": "zurb/bower-foundation#~5.5.3"
   },
   "resolutions": {
     "jquery": ">= 2.1.0"
