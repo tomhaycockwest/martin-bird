@@ -1,0 +1,74 @@
+.section--testimonials {
+	@include grid-row();
+	margin-top: 25px;
+	padding-bottom: 88px;
+	margin-bottom: 170px;
+
+	.inner {
+		@include grid-column( 10, $center:true );
+		text-align: center;
+		position: relative;
+
+		.title {
+			margin-bottom: 74px;
+			font-size: 36px;
+			line-height: 36px;
+		}
+
+		.owl-carousel {
+			background: url('../img/testimonial-bg.png');
+			position: relative;
+			height: 312px;
+
+			.owl-item {
+				position: relative;
+				height: 312px;
+
+				.item {
+					@include center();
+					width: 80%;
+					@include rem( 'font-size', 23px );
+
+					.quote {
+						color: $body;
+						margin: 50px 0 0 0;
+					}
+
+					.name {
+						text-transform: uppercase;
+						font-weight: bold;
+						color: $testimonial-name;
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			.owl-dots {
+				left: 50%;
+				transform: translateX( -50% );
+				bottom: 5px;
+				position: absolute;
+
+
+				.owl-dot {
+					background: #fff;
+					height: 15px;
+					width: 15px;
+					display: inline-block;
+					border-radius: 50%;
+					margin: 0 7px;
+
+					&.active {
+						background: #999;
+					}
+				}
+			}
+		}
+
+		.btn-container {
+			margin-top: 225px;
+			text-align: center;
+		}
+	}
+
+}

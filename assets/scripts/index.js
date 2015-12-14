@@ -67,5 +67,18 @@ $('.gallery-nav-item').click( function(e) {
 	gallery.isotope({ filter: filterValue });
 });
 
+/***********************************
+TESTIMOMIALS
+***********************************/
+
+// owl carousel
+	$('.owl-carousel').owlCarousel({
+	    loop:true,
+	    margin:10,
+	    items: 1,
+	    autoplay: true
+	})
+
+
 
 
