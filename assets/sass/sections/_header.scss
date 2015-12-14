@@ -9,7 +9,6 @@
     left: 0;
     transition: 0.25s background linear;
     
-
     &.not-top {
     	background: $bg;
     }
@@ -23,6 +22,11 @@
 			height: 107px;
 			margin-top: 65px;
 			float: left;
+			transition: 0.25s all linear;
+
+			&.not-top {
+				margin-top: 32px;
+			}
 		}
 
 		.nav {
@@ -30,6 +34,11 @@
 			list-style: none;
 			margin-top: 101px;
 			padding-right: 0.9375rem;
+			transition: 0.25s all linear;
+
+			&.not-top {
+				margin-top: 50px;
+			}
 
 			li {
 				display: inline-block;

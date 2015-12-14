@@ -1,5 +1,6 @@
 .section--gallery {
 	@include grid-row( );
+	margin-to: 25px;
 
 	.gallery-nav {
 		@include grid-column( 2 );

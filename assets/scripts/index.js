@@ -14,11 +14,12 @@ $(".section--intro").backstretch("/assets/img/header.jpg");
 // add bg colour to header if user scrolls
 $(document).scroll(function() {
   if ($(document).scrollTop() === 0) {
-  	$('.header').removeClass('not-top');
+  	$('.header, .nav, .logo').removeClass('not-top');
   } else {
-  	$('.header').addClass('not-top');
+  	$('.header, .nav, .logo').addClass('not-top');
   }
 });
+
 
 /**************************
 TRADES
@@ -30,7 +31,6 @@ $('.trade').on('click', function(e) {
  	var elem = '.trade-description--' + id;
  	$(elem).addClass('show').siblings().removeClass('show');
 });
-
 
 
 /*************************
