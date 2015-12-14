@@ -68,11 +68,6 @@ $('.gallery-nav-item').click( function(e) {
 });
 
 // fancybox
-$('.gallery-item').click( function(e) {
-	e.preventDefault();
-	console.log('click');
-});
-
 $('.gallery-item').fancybox({
 	beforeShow : function() {
 	    var alt = this.element.find('img').attr('alt');
@@ -84,7 +79,7 @@ $('.gallery-item').fancybox({
     helpers: {
 		overlay: {
         	locked: false,
-        	closeClick : true
+        	closeClick : true,
        	},
        	title: {
 			type: 'outside'
