@@ -16,7 +16,8 @@
     "isotope": "~2.2.2",
     "isotope-cells-by-row": "~1.1.2",
     "foundation": "zurb/bower-foundation#~5.5.3",
-    "owl.carousel": "owl-carousel2#~2.0.0-beta.3"
+    "owl.carousel": "owl-carousel2#~2.0.0-beta.3",
+    "fancybox": "~2.1.5"
   },
   "resolutions": {
     "jquery": ">= 2.1.0"

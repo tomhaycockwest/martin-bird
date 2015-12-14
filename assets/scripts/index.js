@@ -67,6 +67,31 @@ $('.gallery-nav-item').click( function(e) {
 	gallery.isotope({ filter: filterValue });
 });
 
+// fancybox
+$('.gallery-item').click( function(e) {
+	e.preventDefault();
+	console.log('click');
+});
+
+$('.gallery-item').fancybox({
+	beforeShow : function() {
+	    var alt = this.element.find('img').attr('alt');
+	    this.inner.find('img').attr('alt', alt);
+	    this.title = alt;
+	},
+    openEffect  : 'fade',
+    padding: 0,
+    helpers: {
+		overlay: {
+        	locked: false,
+        	closeClick : true
+       	},
+       	title: {
+			type: 'outside'
+       }
+    }
+});
+
 /***********************************
 TESTIMOMIALS
 ***********************************/

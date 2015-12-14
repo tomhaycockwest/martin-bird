@@ -36,6 +36,22 @@
 		}
 
 	}
+}
 
+/********************
+FANCYBOX STYLES
+********************/
 
+.fancybox-next {
+    right: -60px;
+}
+
+.fancybox-prev {
+    left: -60px;
+}
+
+.fancybox-opened .fancybox-title {
+	text-align: center;
+	@include rem( 'font-size', 16px );
+	margin-top: 20px;
 }
