@@ -1,0 +1,58 @@
+.section--trades {
+	@include grid-row( );
+
+	.inner {
+		@include grid-column( 12 );
+
+		.title {
+			text-align: center;
+		}
+
+		.trades-container {
+			display: block;
+
+			.trade {
+				@include grid-column( 4, $collapse:true );
+				height: 250px;
+				position: relative;
+				@include rem( 'font-size', 36px );
+				font-weight: bold;
+				color: $trade-title;
+
+				.trade-title {
+					@include center();
+					margin: 0;
+				}
+
+				&--joinery {
+					background: url( '../img/joinery.jpg' );
+					background-repeat: no-repeat;
+				}
+
+				&--carpentry {
+					background: url( '../img/carpentry.jpg' );
+					background-repeat: no-repeat;
+				}
+
+				&--locksmith {
+					background: url( '../img/locksmith.jpg' );
+					background-repeat: no-repeat;
+				}
+			}
+		}
+
+		.trade-description-container {
+			display: block;
+
+			.trade-description {
+				display: none;
+
+				&.show {
+					display: block;
+				}
+
+			}
+		}
+	}
+
+}

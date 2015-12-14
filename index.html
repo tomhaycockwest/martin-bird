@@ -1,31 +1,46 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="en-GB" class="no-js">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
         <title>Martin Bird</title>
+
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/build/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+
+        <!-- build:css assets/build/style.css -->
+        <link rel="stylesheet" href="assets/build/style.css">
+        <!-- endbuild -->
+
+        <!-- build:js assets/build/header.js -->
+        <script src="assets/scripts/services/console.js"></script>
+        <!-- endbuild -->
     </head>
-    <body>
+
+    <!--[if lt IE 7]><body class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+    <!--[if IE 7]><body class="lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]><body class="lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--><body class="" id="home"><!--<![endif]-->
 
        <div class="header">
             <div class="inner">
                 <div class="logo"></div>
                 <ul class="nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Trades</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Testimonial</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#trades">Trades</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonial">Testimonial</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
        </div>
 
         <div class="section--intro"></div>
 
+        <span class="anchor" id="about"></span>
         <div class="section--about">
             <div class="inner">
 
@@ -47,6 +62,48 @@
             </div>
         </div>
 
+        <span class="anchor" id="trades"></span>
+        <div class="section--trades">
+            <div class="inner">
+
+                <h1 class="title">Trades</h1>
+
+                <div class="trades-container">
+                    <a href="#" class="trade trade--joinery" id="joinery">
+                        <p class="trade-title">Joinery</p>
+                    </a>
+                    <a href="#" class="trade trade--carpentry" id="carpentry">
+                        <p class="trade-title">Carpentry</p>
+                    </a>
+                    <a href="#" class="trade trade--locksmith" id="locksmith">
+                        <p class="trade-title">Locksmith</p>
+                    </a>
+                </div>
+
+                <div class="trade-description-container">
+                    <p class="trade-description trade-description--joinery show">
+                        joinery
+                    </p>
+                    <p class="trade-description trade-description--carpentry">
+                        carpentry
+                    </p>
+                    <p class="trade-description trade-description--locksmith">
+                        locksmith
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+        
+
+
+
+
+
+
+        <span class="anchor" id="gallery"></span>
         <div class="section--gallery">
 
             <div class="gallery-nav">
@@ -72,13 +129,15 @@
                 </div>
             </div>
         </div>
+ 
 
-
-
+        <!-- build:js assets/build/footer.js -->
         <script src="assets/vendor/jquery/dist/jquery.js"></script>
         <script src="assets/vendor/jquery-backstretch/jquery.backstretch.js"></script>
         <script src="assets/vendor/isotope/dist/isotope.pkgd.js"></script>
         <script src="assets/vendor/isotope-cells-by-row/cells-by-row.js"></script>
         <script src="assets/build/bundle.js"></script>
+        <!-- endbuild -->
+
     </body>
 </html>

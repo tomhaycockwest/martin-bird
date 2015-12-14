@@ -2,6 +2,7 @@
 
 // Requires
 var $ = require( 'jquery' );
+var SmoothScroll = require( './components/smooth-scroll' );
 
 var windowHeight = $(window).height();
 
@@ -19,7 +20,22 @@ $(document).scroll(function() {
   }
 });
 
-// GALLERY
+/**************************
+TRADES
+**************************/
+
+$('.trade').on('click', function(e) {
+	e.preventDefault();
+ 	var id = $(this).attr( 'id' );
+ 	var elem = '.trade-description--' + id;
+ 	$(elem).addClass('show').siblings().removeClass('show');
+});
+
+
+
+/*************************
+GALLERY
+*************************/
 var gallery = $('.gallery');
 
 gallery.isotope({ 

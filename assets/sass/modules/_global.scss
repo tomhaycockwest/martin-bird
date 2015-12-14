@@ -2,4 +2,12 @@ body {
 	background: $bg;
 	color: $body;
 	font-family: 'capsuula', helvetica, arial, sans-serif;
+
+	.anchor {
+		display: block;
+		height: 172px; /*same height as header*/
+		margin-top: -172px; /*same height as header*/
+		visibility: hidden;
+
+	}
 }

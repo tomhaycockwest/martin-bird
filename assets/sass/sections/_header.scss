@@ -3,11 +3,11 @@
     display: block;
     width: 100%;
     color: #fff;
-    padding-bottom: 30px;
     z-index: 9999;
     position: fixed;
     top: 0;
     left: 0;
+    transition: 0.25s background linear;
     
 
     &.not-top {
