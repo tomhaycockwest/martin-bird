@@ -20,6 +20,11 @@ $(document).scroll(function() {
   }
 });
 
+// toggle mobile nav 
+$( '.mobile-nav-icon-container' ).click( function(  ) {
+	$( '.mobile-nav-icon-container, .mobile-nav-container' ).toggleClass( 'open' );
+} );
+
 
 /**************************
 TRADES
