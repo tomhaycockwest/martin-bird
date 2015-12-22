@@ -58,7 +58,7 @@ var globs = {
 	build     : '' + paths.build + '/**/*.*',
 	css       : '' + paths.css + '/**/*.css',
 	sass      : '' + paths.sass + '/**/*.{scss,sass}',
-	img       : '' + paths.img + '/**/*.{gif,jpg,jpeg,png}',
+	img       : '' + paths.img + '/**/*.{gif,jpg,jpeg,png,svg}',
 	js        : '' + paths.scripts + '/**/*.js', // Used for linting
 	scripts   : '' + paths.scripts + '/**/*.{js,coffee}',
 	templates : '' + assets + '/templates/**/*.hbs',
