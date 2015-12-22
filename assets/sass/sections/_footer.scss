@@ -1,0 +1,28 @@
+.section--footer {
+	padding: 10px;
+	@extend %cf;
+	position: relative;
+
+	li {
+		list-style: none;
+
+		&.left-side {
+			float: left;
+		}
+
+		&.right-side {
+			text-align: right;
+
+			p {
+				position: absolute;
+				bottom: 0;
+				right: 20px;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: #84bc9c;
+		}
+	}
+}

@@ -48,7 +48,6 @@ var gallery = $('.gallery');
 gallery.isotope({ 
 	layoutMode: 'cellsByRow',	
 	itemSelector: '.gallery-item',
-    // isOriginLeft: false,
 	cellsByRow: {
       columnWidth: 250,
       rowHeight: 250,
