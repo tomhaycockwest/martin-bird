@@ -1,6 +1,11 @@
 .section--trades {
-	@include grid-row( );
-	margin-top: 25px;
+	display: none;
+
+	@include above ( small ) {
+		display: block;
+		@include grid-row( );
+		margin-top: 25px;
+	}
 
 	.inner {
 		@include grid-column( 12 );

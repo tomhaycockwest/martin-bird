@@ -85,10 +85,14 @@
 %btn--style-black {
 	color: #84bc9c;
 	border: solid 2px #393737;
-	@include rem( font-size, 18px );
+	@include rem( font-size, 12px );
 	text-transform: uppercase;
 	background: transparent;
 	transition: all 0.25s linear;
+
+	@include above( small ) {
+		@include rem( font-size, 18px );
+	}
 
 	&:hover {
 		color: #393737;

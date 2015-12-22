@@ -4,8 +4,14 @@
 	margin-bottom: 170px;
 
 	.gallery-nav {
-		@include grid-column( 2 );
+		display:none;
 		text-align: left;
+
+		@include above ( small ) {
+			display: 	block;
+			@include grid-column( 3 );
+			text-align: left;
+		}
 		
 		ul {
 			padding: 0;
@@ -25,10 +31,18 @@
 	}
 
 	.gallery-container {
-		@include grid-column( 10, $collapse:true );
+		@include grid-column( 12 );
+
+		@include above ( small ) {
+			@include grid-column( 9, $collapse:true );
+		}
 
 		.gallery {
 			.gallery-item {
+			  @include below ( small ) {
+				left: 50% !important;
+			    transform: translateX(-50%);
+			  }
 			  float: left;
 			  width: 220px;
 			  height: 200px;

@@ -8,11 +8,11 @@
     top: 0;
     left: 0;
     transition: 0.25s background linear;
-    
+
     &.not-top {
     	background: $bg;
     }
-
+    
     .inner {
 		@include grid-row(  );
 
@@ -25,6 +25,10 @@
 			float: left;
 			transition: 0.25s all linear;
 			transform: scale( 0.45 );
+
+			&.not-top {
+				margin-top: 13px;
+			}
 
 			@include above( small ) {
 				transform: scale( 1 );
@@ -71,11 +75,15 @@
 			float: right;
 			position: relative;
 			display: block;
-			@include rem(margin-right, 20px);
+			@include rem(margin-right, 30px);
 			@include rem(margin-top, 25px);
 
 			@include above(small) {
 				display: none;
+			}
+
+			&.not-top {
+				@include rem(margin-top, 43px);
 			}
 
 			.bar {
@@ -121,6 +129,7 @@
 			.mobile-nav {
 				text-align: center;
 				padding: 0;
+				margin-top: 20px;
 
 				li {
 					list-style: none;

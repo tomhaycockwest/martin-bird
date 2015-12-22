@@ -3,6 +3,7 @@
 // Requires
 var $ = require( 'jquery' );
 var SmoothScroll = require( './components/smooth-scroll' );
+var _ = require( 'lodash' );
 
 var windowHeight = $(window).height();
 
@@ -14,14 +15,15 @@ $(".section--intro").backstretch("/assets/img/header.jpg");
 // add bg colour to header if user scrolls
 $(document).scroll(function() {
   if ($(document).scrollTop() === 0) {
-  	$('.header, .nav, .logo').removeClass('not-top');
+  	$('.header, .nav, .logo, .mobile-nav-icon-container').removeClass('not-top');
   } else {
-  	$('.header, .nav, .logo').addClass('not-top');
+  	$('.header, .nav, .logo, .mobile-nav-icon-container').addClass('not-top');
   }
 });
 
 // toggle mobile nav 
-$( '.mobile-nav-icon-container' ).click( function(  ) {
+$( '.mobile-nav-icon-container' ).click( function( e ) {
+	e.preventDefault(  );
 	$( '.mobile-nav-icon-container, .mobile-nav-container' ).toggleClass( 'open' );
 } );
 
@@ -46,9 +48,9 @@ var gallery = $('.gallery');
 gallery.isotope({ 
 	layoutMode: 'cellsByRow',	
 	itemSelector: '.gallery-item',
-    isOriginLeft: false,
+    // isOriginLeft: false,
 	cellsByRow: {
-      columnWidth: 260,
+      columnWidth: 250,
       rowHeight: 250,
       percentPosition: true
     },
@@ -63,7 +65,6 @@ gallery.isotope({
 		}
 	}
 });
-
 
 // bind filter button click
 $('.gallery-nav-item').click( function(e) {

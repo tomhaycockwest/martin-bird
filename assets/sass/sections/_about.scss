@@ -12,14 +12,20 @@
 
 		.title,
 		.copy {
-			font-size: 20px;
+			@include rem( font-size, 20px );
 			letter-spacing: 1px;
 		}
 
 		.title {
-			margin-bottom: 74px;
-			font-size: 36px;
-			line-height: 36px;
+			@include rem( margin-bottom, 40px );
+			@include rem( font-size, 25px );
+			line-height: 25px;
+
+			@include above( small ) {
+				@include rem( font-size, 36px );
+				@include rem( margin-bottom, 74px );
+				line-height: 36px;
+			}
 		}
 
 		.btn-container {

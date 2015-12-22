@@ -10,9 +10,17 @@
 		position: relative;
 
 		.title {
-			margin-bottom: 74px;
-			font-size: 36px;
-			line-height: 36px;
+			@include rem( font-size, 25px );
+			line-height: 25px;
+			margin-bottom: 40px;
+
+			@include above( small ) {
+				@include rem( font-size, 36px );
+				line-height: 36px;
+				margin-bottom: 74px;
+			}
+			
+			
 		}
 
 		.owl-carousel {
@@ -27,7 +35,11 @@
 				.item {
 					@include center();
 					width: 80%;
-					@include rem( 'font-size', 23px );
+					@include rem( font-size, 18px );
+
+					@include above( small ) {
+						@include rem( font-size, 23px );
+					}
 
 					.quote {
 						color: $body;
