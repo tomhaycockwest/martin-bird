@@ -1,0 +1,184 @@
+// ==========================================================================
+// $ Helper Functions
+// ==========================================================================
+
+
+//
+// Lower Range
+// @link https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+//
+@function lower-bound( $range ){
+	@if length( $range ) <= 0 {
+		@return 0;
+	}
+	@return nth( $range, 1 );
+}
+
+
+
+//
+// Upper Range
+// @link https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+//
+@function upper-bound( $range ) {
+	@if length( $range ) < 2 {
+		@return 999999999999;
+	}
+	@return nth( $range, 2 );
+}
+
+
+
+//
+// Strip units
+// @link https://github.com/sass/sass/issues/533#issuecomment-11675408
+//
+@function strip-units( $number ) {
+	@return $number / ( $number * 0 + 1 );
+}
+
+
+
+//
+// Parse integer
+// @param  {string}   a number-like string
+// @return {integer}  an integer
+//
+@function parseInt( $n ) {
+	@return $n / ( $n * 0 + 1 );
+}
+
+
+
+//
+// String Replacement
+//
+// @param  {string}  $string   input string
+// @param  {string}  $search   find this
+// @param  {string}  $replace  replace it with this
+// @return {string}            updated string
+//
+@function str-replace( $string, $search, $replace: '' ) {
+	$index: str-index( $string, $search );
+
+	@if $index {
+		@return str-slice( $string, 1, $index - 1 ) + $replace + str-replace( str-slice( $string, $index + str-length( $search ) ), $search, $replace );
+	}
+
+	@return $string;
+}
+
+
+
+//
+// Converts pixel values to ems
+//
+// @param   {value}  $px    pixels value
+// @param   {value}  $base  (optional) the base font size in pixels
+// @return  {value}         ems value
+//
+// @example `h1 { font-size: em(24px); }`
+//
+@function em( $px, $base: 16px ) {
+	@if unit( $px ) == 'em' { @return $px; } // dont convert if already ems
+	@return ( $px / $base ) * 1em;
+}
+
+
+
+//
+// Photoshop 'Tracking' -> CSS Letter Spacing
+//
+// @param  {int}  $val  Ammount of Photoshop tracking
+//
+// @example  `.kerned { letter-spacing: ls( 14 ); }`
+//
+@function ls( $val ) {
+	@return ( $val / 1000 ) * 1em;
+}
+
+
+
+//
+// Calculate correct nested border radii sizes
+// @link joshnh.com/tools/get-your-nested-border-radii-right.html
+//
+// @param  {value}  $outer-size  size of the outer border radius
+// @param  {value}  $padding     padding between the outer box & inner box
+//
+//	@example:
+//
+//	```scss
+//	$size    : 80px;
+//	$padding : 20px;
+//
+//	.test {
+//		border-radius: $size;
+//		padding: $padding;
+//	}
+//		.test__inner {
+//			border-radius: nested-border-radius($size, $padding);
+//		}
+//	```
+//
+@function nested-border-radius( $outer-size, $padding ) {
+	@return $outer-size - $padding;
+}
+
+
+
+//
+// Asset Helpers
+//
+// @link css-tricks.com/snippets/sass/simple-asset-helper-functions
+// @example `.foo { background-image: image('bar.png'); }`
+//    ->  `.foo { background-image: url('../img/bar.png'); }`
+//
+
+//
+// Base path for assets (fonts, images...),
+// should not include trailing slash
+//
+// @type String
+//
+$asset-base-path: '..' !default;
+
+//
+// Asset URL builder
+//
+// @param  {string}  type  Asset type, matching folder name
+// @param  {string}  file  Asset file name, including extension
+// @param  {bool}    raw   Omit the wrapping `url()` and just return the path
+// @return {URL}           A `url()` function leading to the asset
+//
+@function asset( $type, $file, $raw: false ) {
+	$path: $asset-base-path + '/' + $type + '/' + $file;
+
+	@if $raw == false {
+		$path: url( $path )
+	}
+
+	@return $path;
+}
+
+//
+// Image asset helper
+//
+// @param   {string}    file   Asset file name, including extension
+// @return  {URL}              A `url()` function leading to the image
+// @require {function}  asset
+//
+@function image( $file, $raw: false ) {
+	@return asset( 'img', $file, $raw );
+}
+
+//
+// Font asset helper
+//
+// @param    {string}    file  Asset file name, including extension
+// @return   {URL}             A `url()` function leading to the font
+// @require  {function}  asset
+//
+@function font( $file, $raw: false ) {
+	@return asset( 'fonts', $file, $raw );
+}

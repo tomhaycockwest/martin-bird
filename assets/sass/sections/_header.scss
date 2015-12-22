@@ -20,13 +20,21 @@
 			background: url('/assets/img/logo.svg');
 			width: 148px;
 			height: 107px;
-			margin-top: 65px;
+			margin-top: -10px;
+			margin-left: -25px;
 			float: left;
 			transition: 0.25s all linear;
+			transform: scale( 0.45 );
 
-			&.not-top {
-				margin-top: 32px;
-			}
+			@include above( small ) {
+				transform: scale( 1 );
+				margin-top: 65px;
+				margin-left: 0;
+
+				&.not-top {
+					margin-top: 32px;
+				}
+			} 
 		}
 
 		.nav {
@@ -35,6 +43,11 @@
 			margin-top: 101px;
 			padding-right: 0.9375rem;
 			transition: 0.25s all linear;
+			display: none;
+
+			@include above( small ) {
+				display: block;
+			} 
 
 			&.not-top {
 				margin-top: 50px;
@@ -52,6 +65,53 @@
 					font-weight: bold;
 				}
 			}
+		}
+
+		.mobile-nav {
+			float: right;
+			position: relative;
+			display: block;
+			@include rem(margin-right, 20px);
+			@include rem(margin-top, 25px);
+		}
+
+		.svg-menu-toggle {
+			fill: $body;
+			pointer-events:all; //needs to be there so the hover works
+			cursor:pointer;
+
+			.bar {
+				transform:rotate(0) translateY(0) translateX(0);
+				opacity:1;
+				transform-origin: 20px 10px;
+			    transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+			}
+
+		 //  	.bar:nth-of-type(1) {
+			// 	transform-origin: 20px 10px;
+			// }
+		 //   	.bar:nth-of-type(3) {
+			// 	transform-origin: 20px 10px;
+		 //   }
+		}
+
+		.svg-menu-toggle:hover {
+		    .bar:nth-of-type(1) {
+				transform:rotate(-45deg) translateY(0) translateX(0);
+		    }
+
+		    .bar:nth-of-type(2) {
+				opacity:0;
+		    }
+
+		    .bar:nth-of-type(3) {
+				transform:rotate(45deg) translateY(0em) translateX(0em);
+		    }
+		}
+
+		.inline-svg {
+		  display:block;
+		  margin:0 auto;
 		}
     }
 }

@@ -1,19 +1,30 @@
+@charset 'UTF-8';
 /*
 Project Name: Martin Bird
 Client: Smoking Cow
 Author: Tom Haycock-West
 */
 
+// Settings & Variables
+@import 'partials/functions';
+@import 'partials/vars';
+
+// Vendor
 @import '../vendor/normalize.css/normalize';
 
 @import '../vendor/foundation/scss/foundation/components/global';
 @import '../vendor/foundation/scss/foundation/components/grid';
 
+// Partials
+@import 'partials/responsive';
 @import 'partials/helpers';
-@import 'partials/vars';
+
+// Modules
 @import 'partials/typography';
 @import 'modules/buttons';
 @import 'modules/global';
+
+// Sections
 @import 'sections/header';
 @import 'sections/intro';
 @import 'sections/about';
