@@ -24,21 +24,21 @@
 		}
 
 		.owl-carousel {
-			background: url('../img/testimonial-bg.png');
 			position: relative;
-			height: 312px;
 
 			.owl-item {
 				position: relative;
-				height: 312px;
+				min-height: 312px;
 
 				.item {
 					@include center();
 					width: 80%;
 					@include rem( font-size, 18px );
+					line-height: 26px;
 
 					@include above( small ) {
-						@include rem( font-size, 23px );
+						@include rem( font-size, 18px );
+						line-height: 26px;
 					}
 
 					.quote {
