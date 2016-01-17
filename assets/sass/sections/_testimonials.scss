@@ -12,12 +12,12 @@
 		.title {
 			@include rem( font-size, 25px );
 			line-height: 25px;
-			margin-bottom: 40px;
+			margin-bottom: 20px;
 
 			@include above( small ) {
 				@include rem( font-size, 36px );
 				line-height: 36px;
-				margin-bottom: 74px;
+				margin-bottom: 0;
 			}
 			
 			
@@ -43,7 +43,7 @@
 
 					.quote {
 						color: $body;
-						margin: 50px 0 0 0;
+						margin: 0;
 					}
 
 					.name {
@@ -58,8 +58,12 @@
 			.owl-dots {
 				left: 50%;
 				transform: translateX( -50% );
-				bottom: 5px;
+				bottom: -40px;
 				position: absolute;
+
+				@include above ( small ) {
+					bottom: 5px;
+				}
 
 
 				.owl-dot {
