@@ -5,9 +5,14 @@ body {
 
 	.anchor {
 		display: block;
-		height: 139px; /*same height as header*/
-		margin-top: -139px; /*same height as header*/
+		height: 80px; /*same height as header*/
+		margin-top: -80px; /*same height as header*/
 		visibility: hidden;
+
+		@include above( small ) {
+			height: 139px; /*same height as header*/
+			margin-top: -139px; /*same height as header*/
+		}
 
 	}
 }
