@@ -28,7 +28,7 @@
 
 			.owl-item {
 				position: relative;
-				min-height: 312px;
+				min-height: 320px;
 
 				.item {
 					@include center();
@@ -51,6 +51,11 @@
 						font-weight: bold;
 						color: $testimonial-name;
 						margin-bottom: 0;
+						font-size: 14px;
+
+						@include above( small ) {
+							@include rem( font-size, 18px );
+						}
 					}
 				}
 			}
